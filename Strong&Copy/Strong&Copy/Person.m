@@ -11,7 +11,7 @@
 @implementation Person
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"\n firstName: %@ \n secondName: %@", self.firstName,self.secondName];
+    return [NSString stringWithFormat:@"\n firstName: %@ \n secondName: %@ \n thirdName: %@", self.firstName,self.secondName,self.thirdName];
 }
 
 @end
