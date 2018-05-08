@@ -10,8 +10,9 @@
 
 @interface Person : NSObject
 
+//strong  -> retain 引用计数加一
 @property(nonatomic, strong) NSString *firstName;
-
+//copy 创建新的地址空间存储目标数据
 @property(nonatomic, copy) NSString *secondName;
 
 @end
