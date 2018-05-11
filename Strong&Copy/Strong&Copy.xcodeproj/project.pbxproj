@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8DDA417820A1B538005B6903 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DDA417720A1B538005B6903 /* main.m */; };
 		8DDA418020A1B55B005B6903 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DDA417F20A1B55B005B6903 /* Person.m */; };
+		8DDA418320A1C680005B6903 /* GCD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DDA418220A1C680005B6903 /* GCD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,8 @@
 		8DDA417720A1B538005B6903 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8DDA417E20A1B55B005B6903 /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		8DDA417F20A1B55B005B6903 /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		8DDA418120A1C680005B6903 /* GCD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCD.h; sourceTree = "<group>"; };
+		8DDA418220A1C680005B6903 /* GCD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GCD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +64,8 @@
 			isa = PBXGroup;
 			children = (
 				8DDA417720A1B538005B6903 /* main.m */,
+				8DDA418120A1C680005B6903 /* GCD.h */,
+				8DDA418220A1C680005B6903 /* GCD.m */,
 				8DDA417E20A1B55B005B6903 /* Person.h */,
 				8DDA417F20A1B55B005B6903 /* Person.m */,
 			);
@@ -124,6 +129,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DDA418320A1C680005B6903 /* GCD.m in Sources */,
 				8DDA418020A1B55B005B6903 /* Person.m in Sources */,
 				8DDA417820A1B538005B6903 /* main.m in Sources */,
 			);
