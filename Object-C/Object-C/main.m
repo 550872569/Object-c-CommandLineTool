@@ -8,10 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+void (^globalBlock)() = ^{
+    
+};
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+        __block int a = 0;
+        void (^stackBlock1)() = ^{
+            a = 10;
+        };
     }
     return 0;
 }

@@ -19,9 +19,9 @@
 
 //@property(nonatomic, assign) NSString *thirdName;
 
-#warning property with retain or strong attribute must be of object type
+//#warning property with retain or strong attribute must be of object type
 //@property(nonatomic, strong) int number;
 
-@property(nonatomic, weak) id<PersonDelegate> delegate;
+//@property(nonatomic, weak) id<PersonDelegate> delegate;
 
 @end
