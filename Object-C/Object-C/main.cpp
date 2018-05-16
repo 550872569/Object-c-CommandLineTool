@@ -106,6 +106,8 @@ struct __AtAutoreleasePool {
 };
 
 #define __OFFSETOFIVAR__(TYPE, MEMBER) ((long long) &((TYPE *)0)->MEMBER)
+static __NSConstantStringImpl __NSConstantStringImpl__var_folders_bn_r1bnv30s1wv1cz2jf2szqx880000gn_T_main_c9f7ea_mi_0 __attribute__ ((section ("__DATA, __cfstring"))) = {__CFConstantStringClassReference,0x000007c8,"blcok0:%@",9};
+static __NSConstantStringImpl __NSConstantStringImpl__var_folders_bn_r1bnv30s1wv1cz2jf2szqx880000gn_T_main_c9f7ea_mi_1 __attribute__ ((section ("__DATA, __cfstring"))) = {__CFConstantStringClassReference,0x000007c8,"blcok1:%@",9};
 
 
 
@@ -95562,42 +95564,11 @@ struct NSXPCListenerEndpoint_IMPL {
 
 
 
-
-struct __globalBlock_block_impl_0 {
-  struct __block_impl impl;
-  struct __globalBlock_block_desc_0* Desc;
-  __globalBlock_block_impl_0(void *fp, struct __globalBlock_block_desc_0 *desc, int flags=0) {
-    impl.isa = &_NSConcreteGlobalBlock;
-    impl.Flags = flags;
-    impl.FuncPtr = fp;
-    Desc = desc;
-  }
-};
-static void __globalBlock_block_func_0(struct __globalBlock_block_impl_0 *__cself) {
-
-
-}
-
-static struct __globalBlock_block_desc_0 {
-  size_t reserved;
-  size_t Block_size;
-} __globalBlock_block_desc_0_DATA = { 0, sizeof(struct __globalBlock_block_impl_0)};
-static __globalBlock_block_impl_0 __global_globalBlock_block_impl_0((void *)__globalBlock_block_func_0, &__globalBlock_block_desc_0_DATA);
-void (*globalBlock)() = ((void (*)())&__global_globalBlock_block_impl_0);
-
-struct __Block_byref_a_0 {
-  void *__isa;
-__Block_byref_a_0 *__forwarding;
- int __flags;
- int __size;
- int a;
-};
-
 struct __main_block_impl_0 {
   struct __block_impl impl;
   struct __main_block_desc_0* Desc;
-  __Block_byref_a_0 *a; // by ref
-  __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, __Block_byref_a_0 *_a, int flags=0) : a(_a->__forwarding) {
+  int i;
+  __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, int _i, int flags=0) : i(_i) {
     impl.isa = &_NSConcreteStackBlock;
     impl.Flags = flags;
     impl.FuncPtr = fp;
@@ -95605,24 +95576,80 @@ struct __main_block_impl_0 {
   }
 };
 static void __main_block_func_0(struct __main_block_impl_0 *__cself) {
-  __Block_byref_a_0 *a = __cself->a; // bound by ref
-
-            (a->__forwarding->a) = 10;
-        }
-static void __main_block_copy_0(struct __main_block_impl_0*dst, struct __main_block_impl_0*src) {_Block_object_assign((void*)&dst->a, (void*)src->a, 8/*BLOCK_FIELD_IS_BYREF*/);}
-
-static void __main_block_dispose_0(struct __main_block_impl_0*src) {_Block_object_dispose((void*)src->a, 8/*BLOCK_FIELD_IS_BYREF*/);}
+  int i = __cself->i; // bound by copy
+i;}
 
 static struct __main_block_desc_0 {
   size_t reserved;
   size_t Block_size;
-  void (*copy)(struct __main_block_impl_0*, struct __main_block_impl_0*);
-  void (*dispose)(struct __main_block_impl_0*);
-} __main_block_desc_0_DATA = { 0, sizeof(struct __main_block_impl_0), __main_block_copy_0, __main_block_dispose_0};
+} __main_block_desc_0_DATA = { 0, sizeof(struct __main_block_impl_0)};
+
+struct __main_block_impl_1 {
+  struct __block_impl impl;
+  struct __main_block_desc_1* Desc;
+  __main_block_impl_1(void *fp, struct __main_block_desc_1 *desc, int flags=0) {
+    impl.isa = &_NSConcreteStackBlock;
+    impl.Flags = flags;
+    impl.FuncPtr = fp;
+    Desc = desc;
+  }
+};
+static void __main_block_func_1(struct __main_block_impl_1 *__cself) {
+}
+
+static struct __main_block_desc_1 {
+  size_t reserved;
+  size_t Block_size;
+} __main_block_desc_1_DATA = { 0, sizeof(struct __main_block_impl_1)};
+
+struct __main_block_impl_2 {
+  struct __block_impl impl;
+  struct __main_block_desc_2* Desc;
+  __main_block_impl_2(void *fp, struct __main_block_desc_2 *desc, int flags=0) {
+    impl.isa = &_NSConcreteStackBlock;
+    impl.Flags = flags;
+    impl.FuncPtr = fp;
+    Desc = desc;
+  }
+};
+static void __main_block_func_2(struct __main_block_impl_2 *__cself) {
+}
+
+static struct __main_block_desc_2 {
+  size_t reserved;
+  size_t Block_size;
+} __main_block_desc_2_DATA = { 0, sizeof(struct __main_block_impl_2)};
+
+struct __main_block_impl_3 {
+  struct __block_impl impl;
+  struct __main_block_desc_3* Desc;
+  int i;
+  __main_block_impl_3(void *fp, struct __main_block_desc_3 *desc, int _i, int flags=0) : i(_i) {
+    impl.isa = &_NSConcreteStackBlock;
+    impl.Flags = flags;
+    impl.FuncPtr = fp;
+    Desc = desc;
+  }
+};
+static void __main_block_func_3(struct __main_block_impl_3 *__cself) {
+  int i = __cself->i; // bound by copy
+i;}
+
+static struct __main_block_desc_3 {
+  size_t reserved;
+  size_t Block_size;
+} __main_block_desc_3_DATA = { 0, sizeof(struct __main_block_impl_3)};
 int main(int argc, const char * argv[]) {
     /* @autoreleasepool */ { __AtAutoreleasePool __autoreleasepool; 
-        __attribute__((__blocks__(byref))) __Block_byref_a_0 a = {(void*)0,(__Block_byref_a_0 *)&a, 0, sizeof(__Block_byref_a_0), 0};
-        void (*stackBlock1)() = ((void (*)())&__main_block_impl_0((void *)__main_block_func_0, &__main_block_desc_0_DATA, (__Block_byref_a_0 *)&a, 570425344));
+        int i = 10;
+        void (*block)() = ((void (*)())&__main_block_impl_0((void *)__main_block_func_0, &__main_block_desc_0_DATA, i));
+
+
+
+        void (*stackBlock)() = ((void (*)())&__main_block_impl_1((void *)__main_block_func_1, &__main_block_desc_1_DATA));
+
+        NSLog((NSString *)&__NSConstantStringImpl__var_folders_bn_r1bnv30s1wv1cz2jf2szqx880000gn_T_main_c9f7ea_mi_0,((void (*)())&__main_block_impl_2((void *)__main_block_func_2, &__main_block_desc_2_DATA)));
+        NSLog((NSString *)&__NSConstantStringImpl__var_folders_bn_r1bnv30s1wv1cz2jf2szqx880000gn_T_main_c9f7ea_mi_1,((void (*)())&__main_block_impl_3((void *)__main_block_func_3, &__main_block_desc_3_DATA, i)));
     }
     return 0;
 }
