@@ -52,19 +52,19 @@ void quickSort(int *a ,int idxLeft,int idxRight) {
 
 
 void quick(int *a,int idxLeft,int idxRight) {
-    int i = 0,j =0,key = 0;
+    int i=0,j=0,key=0;
     if (idxLeft>idxRight) {
         return;
     }
-    i = idxLeft;
-    j = idxRight;
-    key = a[idxLeft];
+    i=idxLeft;
+    j=idxRight;
+    key=a[idxLeft];
     while (i<j) {
-        while (i<j && a[j] > key) {
+        while (i<j && key<a[j]) {
             j--;
         }
         a[i] = a[j];
-        while (i<j && a[i] < key) {
+        while (i<j &&key>a[i]) {
             i++;
         }
         a[j] = a[i];
@@ -74,10 +74,23 @@ void quick(int *a,int idxLeft,int idxRight) {
     quick(a, i+1, idxRight);
 }
 
+void sort(int *a,int count) {
+    for (int i = 0; i<count-1; i++) {
+        for (int j = 0; j<count-i-1; j++) {
+            int temp = 0;
+            if (a[j]<a[j+1]) {
+                temp=a[j];
+                a[j] = a[j+1];
+                a[j+1] = temp;
+            }
+        }
+    }
+}
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         int a[12] = {1,9,5,8,2,7,6,10,20,56,23,32};
-        quick(&a, 0, 11);
+//        quick(&a, 0, 11);
+        sort(&a, 12);
         for (int i = 0; i<12; i++) {
             printf(" %d ",a[i]);
         }
