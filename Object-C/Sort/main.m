@@ -7,93 +7,119 @@
 //
 
 #import <Foundation/Foundation.h>
+#include <stdlib.h>
+#include <stdio.h>
 
-void quickSort(int *a ,int idxLeft,int idxRight) {
-    int i = 0,j = 0,key = 0;
-    if (idxLeft>idxRight) {//如果左边索引大于或者等于右边的索引就代表已经整理完成一个组了
+void quickSort(int *a, int indexLeft,int indexRight) {
+    int i = 0, j = 0, key = 0;
+    if (indexLeft>indexRight) {
         return;
     }
-    key = a[idxLeft];//定义基准
-    i = idxLeft;
-    j = idxRight;
+    i = indexLeft;
+    j = indexRight;
+    key = a[indexLeft];
     while (i<j) {
-
-        while (a[j]>=key && i<j) {
+        while (i<j&& a[j] > key) {
             j--;
         }
         a[i] = a[j];
-        
-        while (a[i]<key && i<j) {
+        while (i<j && a[i] < key) {
             i++;
         }
         a[j] = a[i];
     }
-   
-
     a[i] = key;
-    printf("i=%d j=%d key=%d",i,j,key);
-    printf("\n");
-    for (int i = 0; i<12; i++) {
-        printf(" %d ",a[i]);
-    }
-    printf("\n");
-    quickSort(a, idxLeft, i-1);
-    quickSort(a, i+1, idxRight);
-    
+    quickSort(a, indexLeft, i-1);
+    quickSort(a, i+1, indexRight);
 }
 
 
 
 
 
-
-
-
-
-
-void quick(int *a,int idxLeft,int idxRight) {
-    int i=0,j=0,key=0;
-    if (idxLeft>idxRight) {
-        return;
-    }
-    i=idxLeft;
-    j=idxRight;
-    key=a[idxLeft];
-    while (i<j) {
-        while (i<j && key<a[j]) {
-            j--;
-        }
-        a[i] = a[j];
-        while (i<j &&key>a[i]) {
-            i++;
-        }
-        a[j] = a[i];
-    }
-    a[i] = key;
-    quick(a, idxLeft, i-1);
-    quick(a, i+1, idxRight);
-}
-
-void sort(int *a,int count) {
+void sortES(int *a,int count) {
     for (int i = 0; i<count-1; i++) {
         for (int j = 0; j<count-i-1; j++) {
-            int temp = 0;
-            if (a[j]<a[j+1]) {
-                temp=a[j];
+            int tempDes=0;
+            if (a[j] > a[j+1]) {
+                tempDes = a[j];
                 a[j] = a[j+1];
-                a[j+1] = temp;
+                a[j+1] = tempDes;
             }
         }
     }
 }
+
+typedef struct NODE {
+    struct NODE *next;
+    int number;
+} node;
+
+node * createLinkLish(int length) {
+    if (!length) {
+        return NULL;
+    }
+    node *head,*p,*q;
+    int number = 1;
+    head = (node *)malloc(sizeof(node));
+    head->number = 1;
+    head->next = head;
+    p = q = head;
+    while (++number<=length) {
+        p = (node *)malloc(sizeof(node));
+        p->number = number;
+        p->next = NULL;
+        q->next = p;
+        q = p;
+    }
+    return head;
+}
+
+void printfLinkLish(node *head) {
+    if (head==NULL) {
+        return;
+    }
+    node *p = head;
+    while (p) {
+        node *q = p->next;
+        printf("%d %d \n",p->number,q->number);
+        p = p->next;
+    }
+    printf("\n");
+}
+
+node * reverseFunc(node *head) {
+    if (head==NULL) {
+        return head;
+    }
+    node *p,*q;
+    p = head;
+    q = NULL;
+    while (p) {
+        node *pNext = p->next;
+        p->next = q;
+        q = p;
+        p = pNext;
+    }
+    return q;
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        int a[12] = {1,9,5,8,2,7,6,10,20,56,23,32};
-//        quick(&a, 0, 11);
-        sort(&a, 12);
-        for (int i = 0; i<12; i++) {
-            printf(" %d ",a[i]);
+//        int a[12] = {1,9,5,8,2,7,6,10,20,56,23,32};
+//        for (int i = 0; i<12; i++) {
+//            printf(" %d ",a[i]);
+//        }
+        
+        
+        node *head = createLinkLish(7);
+        if (head) {
+            printfLinkLish(head);
+//            node *reverseHead = reverseFunc(head);
+//            printfLinkLish(reverseHead);
+//            free(reverseHead);
         }
+        reverseFunc(nil);
     }
     return 0;
 }
