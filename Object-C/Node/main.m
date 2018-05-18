@@ -8,37 +8,45 @@
 
 #import <Foundation/Foundation.h>
 
-#include <stdio.h>
-
-#include <stdlib.h>
-
-
 typedef struct NODE {
-    
     struct NODE *next;
-    
-    int num;
-    
-}node;
+    int number;
+} node;
 
-node *createLinkList(int length) {    
-    if (length <= 0) {
+node *createLinkedList(int length) {
+    if (length<=0) {
         return NULL;
     }
     node *head,*p,*q;
-    int number = 1;
-    head = (node *)malloc(sizeof(node));
-    head->num = 1;
-    head->next = head;
+    int noteNumber = 1;
+    head = malloc(sizeof(node));
+    head->number = noteNumber;
+    head->next = NULL;
     p = q = head;
-    while (++number <= length) {
+    while (++noteNumber<=length) {
         p = (node *)malloc(sizeof(node));
-        p->num = number;
+        p->number = noteNumber;
         p->next = NULL;
-        q->next = p;
-        q = p;
+        q->next = p;//q 原本指向head的地址 ==> head-> = p(p原来也指向head 进入while之后malloc开辟新空间) 这里实际是在给head的next赋值
+        q = p;//malloc 出来的新空间又给了q
     }
     return head;
+}
+
+node *reverseNode(node *head) {
+    if (!head) {
+        return NULL;
+    }
+    node *p,*q;
+    p = head;//接收原始链表
+    q = NULL;//初始化空链表 用于返回值
+    while (p) {
+        node *pNext = p -> next;//获取原始链表第一个节点之后的所有节点 ==number-++i（i=1）
+        p -> next = q;//原始链表和p置空
+        q = p;//空链表赋值
+        p = pNext;//临时变量接收 原始链表第一个节点之后的所有节点
+    }
+    return q;
 }
 
 void printLinkList(node *head) {
@@ -47,34 +55,19 @@ void printLinkList(node *head) {
     }
     node *p = head;
     while (p) {
-        printf("%d ", p->num);
+        printf("%d ", p->number);
         p = p -> next;
     }
     printf("\n");
 }
 
-node *reverseFunc1(node *head) {
-    if (head == NULL) {
-        return head;
-    }
-    node *p,*q;
-    p = head;
-    q = NULL;
-    while (p) {
-        node *pNext = p -> next;
-        p -> next = q;
-        q = p;
-        p = pNext;
-    }
-    return q;
-}
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        node *head = createLinkList(7);
+        node *head = createLinkedList(7);
         if (head) {
             printLinkList(head);
-            node *reHead = reverseFunc1(head);
+            node *reHead = reverseNode(head);
             printLinkList(reHead);
             free(reHead);
         }
