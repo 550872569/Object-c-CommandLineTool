@@ -18,6 +18,17 @@ int main(int argc, const char * argv[]) {
         
 #define SQR(a)              ((a)*(a))
         
+        
+        const int a;
+        int const b;
+        const int *c; //&c not assign
+        int * const d;
+//        c = 9;
+//        d = 10;
+//        &d = 10;
+//        d= 10;
+        
+        
     }
     return 0;
 }
