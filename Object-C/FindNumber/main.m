@@ -146,6 +146,31 @@ void find_2_max(int array[], int count, int *max, int *secondMax) {
         }
     }
 }
+
+
+int findTarget(int array[], int count, int target) {
+    if (count<=0) {
+        return -1;
+    }
+    
+    int low = 0;
+    int high = count-1;
+    while (low<high) {
+        int mid = (low+high)*0.5;
+        if (array[mid]>target) {
+            high = mid -1;
+        } else if (array[mid]<target){
+            low = mid +1;
+        } else {
+            return mid;
+        }
+    }
+    
+    return -1;
+}
+
+
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        int a[12] = {0,1,2,3,4,5,6,7,8,9,10};
@@ -166,8 +191,13 @@ int main(int argc, const char * argv[]) {
         
         int firstMax = 0;
         int secondMax = 0;
-        find_2_max(array,  sizeof(array)/sizeof(array[0]), &max, &firstMax);
-        printf("The 2 largest number is: %d and %d.\n", max, firstMax);
+        find_2_max(array,  sizeof(array)/sizeof(array[0]), &firstMax, &secondMax);
+        printf("The 2 largest number is: %d and %d \n", firstMax,secondMax);
+        
+        
+        int arrayNumber[10] = {1,2,3,4,5,6,7,8,9,10};
+        int count = sizeof(arrayNumber)/sizeof(arrayNumber[0]);
+        printf("target : %d \n",findTarget(arrayNumber, count, 6));
 
     }
     return 0;
