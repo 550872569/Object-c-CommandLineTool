@@ -51,10 +51,30 @@ void sort(int *a, int count) {
         }
     }
 }
-
+void find_2_max(int *a, int count, int *first, int *second) {
+    if (count<=0) {
+        *first = -1;
+        *second = -1;
+    }
+    if (a[0] > a[1]) {
+        *first = a[0];
+        *second = a[1];
+    } else if (a[0] < a[1]) {
+        *first = a[1];
+        *second = a[0];
+    }
+    for (int i = 2; i<count; i++) {
+        if (a[i] > *first) {
+            *second  = *first;
+            *first = a[i];
+        } else if (a[i]>*second) {
+            *second = a[i];
+        }
+    }
+}
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        int a[10] = {1,2,4,56,8,6,54,45,3};
+        int a[15] = {1,2,4,56,8,6,54,45,3,58,90,99};
         int max = 0;
         findMax(a, 10, &max);
         printf("max = %d \n",max);
@@ -65,6 +85,12 @@ int main(int argc, const char * argv[]) {
             printf("%d ",a[i]);
         }
         printf("\n");
+        
+        int first = 0;
+        int second = 0;
+    
+        find_2_max(a, 15, &first, &second);
+        printf("first %d second %d\n",first,second);
     }
     return 0;
 }
