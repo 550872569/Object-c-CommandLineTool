@@ -67,6 +67,30 @@ void sort(int *a, int count) {
     }
 }
 
+void quickSort(int *a, int left, int right) {
+    int i = 0, j = 0, key = 0;
+    if (left>right) {
+        return;
+    }
+    i = left;
+    j = right;
+    key = a[left];
+    while (i<j) {
+        while (i<j && a[j] > key) {
+            j--;
+        }
+        a[i] = a[j];
+        while (i<j && a[i] < key) {
+            i++;
+        }
+        a[j] = a[i];
+    }
+    a[i] = key;
+    quickSort(a, left, i-1);
+    quickSort(a, i+1, right);
+    
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         int a[10] = {1,2,3,4,100,6,7,8,99,90};
@@ -79,6 +103,7 @@ int main(int argc, const char * argv[]) {
         printf("first = %d \n second = %d\n",first,second);
         
         sort(a, 10);
+        quickSort(a, 0, 9);
         for (int i = 0; i<10; i++) {
             printf("%d ",a[i]);
         }
