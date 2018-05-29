@@ -45,6 +45,28 @@ void find_2_max(int *a, int count, int *first, int *second) {
     
 }
 
+void sort(int *a, int count) {
+    if (count<=0) {
+        *a = -1;
+    }
+    for (int i = 0; i<count-1; i++) {
+        for (int j = 0; j<count-1-i; j++) {
+            int temp = a[j];
+            if (a[j]>a[j+1]) {//aes
+                temp = a[j];
+                a[j] = a[j+1];
+                a[j+1] = temp;
+            }
+            
+            if (a[j]<a[j+1]) {//des
+                temp = a[j];
+                a[j] = a[j+1];
+                a[j+1] = temp;
+            }
+        }
+    }
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         int a[10] = {1,2,3,4,100,6,7,8,99,90};
@@ -55,6 +77,12 @@ int main(int argc, const char * argv[]) {
         int second = 0;
         find_2_max(a, 10, &first, &second);
         printf("first = %d \n second = %d\n",first,second);
+        
+        sort(a, 10);
+        for (int i = 0; i<10; i++) {
+            printf("%d ",a[i]);
+        }
+        printf("\n");
     }
     return 0;
 }
