@@ -91,6 +91,25 @@ void quickSort(int *a, int left, int right) {
     
 }
 
+int findTarget(int *a, int count, int target) {
+    if (count<=0) {
+        return  -1;
+    }
+    int low = 0;
+    int high = count-1;
+    while (low<high) {
+        int mid = (low+high)*0.5;
+        if (a[mid]>target) {
+            high = mid-1;
+        } else if (a[mid]<target) {
+            low = mid+1;
+        } else {
+            return mid;
+        }
+    }
+    return -1;
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         int a[10] = {1,2,3,4,100,6,7,8,99,90};
@@ -108,6 +127,9 @@ int main(int argc, const char * argv[]) {
             printf("%d ",a[i]);
         }
         printf("\n");
+        int b[10] = {1,2,3,4,5,6,7,8,9,10};
+        int targetIndex = findTarget(b, 10, 10);
+        printf("targetIndex = %d \n",targetIndex);
     }
     return 0;
 }
