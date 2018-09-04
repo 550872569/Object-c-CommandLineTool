@@ -110,6 +110,64 @@ int findTarget(int *a, int count, int target) {
     return -1;
 }
 
+void quickSorts(int *a, int left, int right) {
+    if (left>right) {
+        return;
+    }
+    int i = left;
+    int j = right;
+    int key = a[left];
+    while (i<j) {
+        while (i<j && a[j] > key) {
+            j--;
+        }
+        a[i] = a[j];
+        while (i<j && a[i] < key) {
+            i++;
+        }
+        a[j] = a[i];
+    }
+    a[i] = key;
+    quickSorts(a, left, i-1);
+    quickSorts(a, i+1, right);
+    
+}
+
+int findTargetIndex(int *a, int count, int target) {
+    if (count<=0) {
+        return -1;
+    }
+    for (int i = 0; i<count; i++) {
+        if (target==a[i]) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int findTargetIdx(int *a, int count, int target) {
+    if (count<=0) {
+        return -1;
+    }
+    int low = 0;
+    int high = count-1;
+    int number = 0;
+    while (++number<count) {
+        int mid = (low+high)*0.5;
+        if (a[mid] > target) {
+            high = mid-1;
+        } else if (a[mid] < target){
+            low = mid +1;
+        } else {
+            return mid;
+        }
+        
+    }
+    
+    
+    return -1;
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         int a[10] = {1,2,3,4,100,6,7,8,99,90};
@@ -130,6 +188,18 @@ int main(int argc, const char * argv[]) {
         int b[10] = {1,2,3,4,5,6,7,8,9,10};
         int targetIndex = findTarget(b, 10, 10);
         printf("targetIndex = %d \n",targetIndex);
+        
+        int c[10] = {1,2,3,4,100,6,7,8,99,90};
+        quickSorts(c, 0, 9);
+        for (int i = 0; i<10; i++) {
+            printf("%d ",c[i]);
+        }
+        int idx = findTargetIndex(c, 10, 100);
+        printf("taret idx =%d",idx);
+        
+        int idxtarget = findTargetIdx(c, 10, 4);
+        printf("taret idx =%d",idxtarget);
+
     }
     return 0;
 }
